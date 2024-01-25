@@ -2,7 +2,9 @@
   "name": "@my-mono-repo/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "start:apps": "nx run-many --target=serve --projects=react-mfe-a,react-app-shell --parallel"
+  },
   "private": true,
   "devDependencies": {
     "@angular-devkit/build-angular": "~17.0.0",

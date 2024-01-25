@@ -1,8 +1,11 @@
 import styled from 'styled-components';
+import ErrorBoundary from './components/ErrorBoundary'; // Import the ErrorBoundary component
 
-import NxWelcome from './nx-welcome';
+// import NxWelcome from './nx-welcome';
+import { Suspense } from 'react';
+import ReactMFE from 'ReactMFE/Module';
 
-import { Route, Routes, Link } from 'react-router-dom';
+// import { Route, Routes, Link } from 'react-router-dom';
 
 const StyledApp = styled.div`
   // Your style here
@@ -11,15 +14,21 @@ const StyledApp = styled.div`
 export function App() {
   return (
     <StyledApp>
-      <NxWelcome title="react-app-shell" />
+      {/* <NxWelcome title="react-app-shell" /> */}
 
       {/* START: routes */}
       {/* These routes and navigation have been generated for you */}
       {/* Feel free to move and update them to fit your needs */}
-      <br />
+      {/* <br />
       <hr />
-      <br />
-      <div role="navigation">
+      <br /> */}
+      <h1>APP shell</h1>
+      <ErrorBoundary fallback={<div>Custom error message or component</div>}>
+        <Suspense fallback={<div>Loading Microfrontend...</div>}>
+          <ReactMFE />
+        </Suspense>
+      </ErrorBoundary>
+      {/* <div role="navigation">
         <ul>
           <li>
             <Link to="/">Home</Link>
@@ -47,7 +56,7 @@ export function App() {
             </div>
           }
         />
-      </Routes>
+      </Routes> */}
       {/* END: routes */}
     </StyledApp>
   );

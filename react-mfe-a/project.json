@@ -48,7 +48,9 @@
       "defaultConfiguration": "development",
       "options": {
         "buildTarget": "react-mfe-a:build",
-        "hmr": true
+        "hmr": true,
+        "publicHost": "http://localhost:4202",
+        "port": 4202
       },
       "configurations": {
         "development": {
