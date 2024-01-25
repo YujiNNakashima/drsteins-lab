@@ -1,0 +1,82 @@
+{
+  "name": "react-mfe-a",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "react-mfe-a/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/react-mfe-a",
+        "index": "react-mfe-a/src/index.html",
+        "baseHref": "/",
+        "main": "react-mfe-a/src/main.tsx",
+        "tsConfig": "react-mfe-a/tsconfig.app.json",
+        "assets": ["react-mfe-a/src/favicon.ico", "react-mfe-a/src/assets"],
+        "styles": [],
+        "scripts": [],
+        "webpackConfig": "react-mfe-a/webpack.config.js"
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "react-mfe-a/src/environments/environment.ts",
+              "with": "react-mfe-a/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/webpack:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "react-mfe-a:build",
+        "hmr": true
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "react-mfe-a:build:development"
+        },
+        "production": {
+          "buildTarget": "react-mfe-a:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
+    },
+    "serve-static": {
+      "executor": "@nx/web:file-server",
+      "options": {
+        "buildTarget": "react-mfe-a:build"
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "react-mfe-a/jest.config.ts"
+      }
+    }
+  },
+  "tags": []
+}
