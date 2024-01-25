@@ -1,0 +1,30 @@
+{
+  "name": "react-app-shell-e2e",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "react-app-shell-e2e/src",
+  "targets": {
+    "e2e": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "react-app-shell-e2e/cypress.config.ts",
+        "testingType": "e2e",
+        "devServerTarget": "react-app-shell:serve"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "react-app-shell:serve:production"
+        },
+        "ci": {
+          "devServerTarget": "react-app-shell:serve-static"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
+    }
+  },
+  "implicitDependencies": ["react-app-shell"],
+  "tags": []
+}

@@ -66,6 +66,19 @@
         "style": "styled-components",
         "linter": "eslint"
       }
+    },
+    "@nx/angular:application": {
+      "style": "sass",
+      "linter": "eslint",
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "none"
+    },
+    "@nx/angular:library": {
+      "linter": "eslint",
+      "unitTestRunner": "jest"
+    },
+    "@nx/angular:component": {
+      "style": "sass"
     }
   }
 }
